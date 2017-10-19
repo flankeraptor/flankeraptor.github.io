@@ -1,0 +1,16 @@
+---
+layout: post
+title: 20171019 安全动态
+subtitle: 2017/10/19
+date: 2017-10-19
+author: FR
+header-img: img/post-bg-dailysec.jpg
+catalog: true
+tags:
+    - daily
+---
+# 安全新闻
+- **[WPA2 KRACK 攻击漏洞相关公司的固件及驱动升级情况汇总]**(https://www.easyaq.com/news/496928615.shtml)
+    > 唉，Wifi啊Wifi。
+# 技术动态
+- **[Browser security beyond sandboxing](https://blogs.technet.microsoft.com/mmpc/2017/10/18/browser-security-beyond-sandboxing/)**
