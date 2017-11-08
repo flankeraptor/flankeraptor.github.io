@@ -15,10 +15,7 @@ tags:
 
 目前我们正在对ShadowBrokers公开的利用工具以及脚本等进行了全方位的分析和分类工作，所以写一篇关于Linux下“envisioncollision”漏洞利用的简单介绍是非常值得的。我们之前已经对所公开文件中的[PHPBB](https://steemit.com/security/@shadoweye/analysis-of-the-shadowbrokers-xpphpbb-pl-exploit)漏洞进行披露，当时的文章中提到这个漏洞非常受网络犯罪组织的欢迎，因为很多web论坛都存在“有效”的SIGINT目标，所以接下来披露另一个web论坛漏洞合情合理。
 
-道友们应该碰到过管理在本地保存远程终端的凭据，凭据里躺着诱人的胴体(服务器密码)，早已让我们的大棒饥渴难耐了。
-但是，胴体却裹了一身道袍(加密)，待老衲操起法器将其宽衣解带。
-
-![img/2017-10-20/pjyczdpjhqfwqmm_01.png](https://www.t00ls.net/attachments/month_1710/1710010133df4eed0bc854ab65.png)
+## 基本介绍
 
 ## 0x01 凭据管理器中查看Windows凭据：TERMSRV/1xx.xxx.xxx.xx2
 
