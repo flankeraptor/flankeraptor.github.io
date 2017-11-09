@@ -30,7 +30,8 @@ tags:
 
 例如，当访问[http://justanotherbuganalysis.github.io/](http://justanotherbuganalysis.github.io/) 时， DNS query 如下，
 
->`9d 4b 01 00 00 01 00 00 00 00 00 00 16 6a 75 73  .K...........jus
- 74 61 6e 6f 74 68 65 72 62 75 67 61 6e 61 6c 79  tanotherbuganaly
- 73 69 73 06 67 69 74 68 75 62 02 69 6f 00 00 01  sis.github.io...
+`9d 4b 01 00 00 01 00 00 00 00 00 00 16 6a 75 73  .K...........jus  
+ 74 61 6e 6f 74 68 65 72 62 75 67 61 6e 61 6c 79  tanotherbuganaly  
+ 73 69 73 06 67 69 74 68 75 62 02 69 6f 00 00 01  sis.github.io...  
  00 01                                            ..              `
+
