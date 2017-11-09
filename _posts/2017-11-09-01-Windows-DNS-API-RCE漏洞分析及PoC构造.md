@@ -14,9 +14,23 @@ tags:
     - PoC
 ---
 
-- **来自FreeBuf [【FreeBuf链接】](http://www.freebuf.com/articles/system/151161.html)**  
+- **来自FreeBuf [【FreeBuf链接】](http://www.freebuf.com/vuls/151050.html)**  
 
-在分析koadic渗透利器时，发现它有一个注入模块，其DLL注入实现方式和一般的注入方式不一样。搜索了一下发现是由HarmanySecurity的Stephen Fewer提出的ReflectiveDLL Injection. 由于目前互联网上有关这个反射式DLL注入的分析并不多，也没有人分析其核心的ReflectiveLoader具体是怎么实现的，因此我就在这抛砖引玉了。
+根据 Microsoft 2017年10月安全通告，多个版本 Windows 中的 dnsapi.dll 在处理 DNS response 时可导致 SYSTEM 权限 RCE 。
 
-## 0×00 引言
-常规的DLL注入方式相信大家都很熟悉了，利用CreateRemoteThread这一函数在目标进程中开始一个新的线程，这个线程执行系统的API函数LoadLibrary，之后DLL就被装载到目标进程中了。然而，由于这一技术被大量的恶意软件利用，各种安全对DLL注入这一块自然是严加看守，而常规的注入方式太过于套路化(CreateRemoteThread+ LoadLibrary)，导致它十分容易被检测出来。同时，常规的DLL注入方式还需要目标DLL必须存在磁盘上，而文件一旦“落地”就也存在着被杀毒软件查杀的风险。
+需要注意的是，不是 Windows 系统中所有 DNS 解析都有问题，比如 nslookup 并不解析 DNSSEC，所以没有问题，同时，也不是所有能触发漏洞的地方都能在 SYSTEM 权限下执行代码，只有像 Windows Update 这样的 SYSTEM 权限进程才能成为 SYSTEM 权限 RCE 的攻击入口。
+
+以 DNS Client API DLL 10.0.15063.0 与 10.0.15063.674 为例，补丁对比，
+
+![img/2017-11-09/15084703471529.png](http://image.3001.net/images/20171020/15084703471529.png)
+
+可知漏洞存在于 dnsapi.dll 中的 Nsec3_RecordRead 函数，那么可以确定问题就是出在解析 DNS response 的 NSEC3 Resource record，为了构造 PoC，先得了解这个 “NSEC3″ 的背景。首先，DNS 协议数据结构如下图所示，
+
+![img/2017-11-09/15084703547099.png](http://image.3001.net/images/20171020/15084703547099.png)
+
+例如，当访问[http://justanotherbuganalysis.github.io/](http://justanotherbuganalysis.github.io/) 时， DNS query 如下，
+
+>`9d 4b 01 00 00 01 00 00 00 00 00 00 16 6a 75 73  .K...........jus
+ 74 61 6e 6f 74 68 65 72 62 75 67 61 6e 61 6c 79  tanotherbuganaly
+ 73 69 73 06 67 69 74 68 75 62 02 69 6f 00 00 01  sis.github.io...
+ 00 01                                            ..              `
