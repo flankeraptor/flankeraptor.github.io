@@ -21,6 +21,8 @@ tags:
 
 ![img/2017-11-17/t0100faf53f7677b5b1.png](http://p7.qhimg.com/t0100faf53f7677b5b1.png)
 
+| 图1. C语言版的tcp_bind_shell |
+
 shellcode必须遵守如下几点基本规则：
 
   1. 长度尽可能短。实际环境中可用的内存可能非常小，可能导致shellcode注入失败。
