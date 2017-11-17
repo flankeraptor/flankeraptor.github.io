@@ -21,7 +21,7 @@ tags:
 
 ![img/2017-11-17/t0100faf53f7677b5b1.png](http://p7.qhimg.com/t0100faf53f7677b5b1.png)
 
-<center>图1. C语言版的tcp_bind_shell</center>
+|: 图1. C语言版的tcp_bind_shell :|
 
 shellcode必须遵守如下几点基本规则：
 
