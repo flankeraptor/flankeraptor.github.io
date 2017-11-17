@@ -21,7 +21,7 @@ tags:
 
 ![img/2017-11-17/t0100faf53f7677b5b1.png](http://p7.qhimg.com/t0100faf53f7677b5b1.png)
 
-|: 图1. C语言版的tcp_bind_shell123456789 :|
+<center>图1. C语言版的tcp_bind_shell</center>
 
 shellcode必须遵守如下几点基本规则：
 
@@ -41,31 +41,31 @@ shellcode必须遵守如下几点基本规则：
 
 ![img/2017-11-17/t01b381c6ea36b04779.png](http://p6.qhimg.com/t01b381c6ea36b04779.png)
 
-图2. 在RAX寄存器中存放的syscall调用号
+<center>图2. 在RAX寄存器中存放的syscall调用号</center>
 
 Python是个很好的工具，我们可以使用python来识别函数所使用的常量参数。
 
 ![img/2017-11-17/t01b68d6d13c04b18a4.png](http://p8.qhimg.com/t01b68d6d13c04b18a4.png)
 
-图3. 使用python的socket模块获取常量值
+<center>图3. 使用python的socket模块获取常量值</center>
 
 掌握这些基本知识后，我们可以构造出一段最为简单的代码：
 
 ![img/2017-11-17/t012f9ef5de6dc3932e.png](http://p2.qhimg.com/t012f9ef5de6dc3932e.png)
 
-图4. socket syscall
+<center>图4. socket syscall</center>
 
 然而，如果我们编译这段代码（使用的命令为：nasm -f elf64 bindshell.nasm -o bindshell.o），导出目标（object）代码（使用的命令为：objdump -M intel -d bindshell.o），我们会发现结果中包含null字节：
 
 ![img/2017-11-17/t01884432382c5dbe11.png](http://p6.qhimg.com/t01884432382c5dbe11.png)
 
-图5. 对应的汇编代码
+<center>图5. 对应的汇编代码</center>
 
 如果想解决这个问题，最简单的一种办法就是使用xor指令清空寄存器，然后将立即数（immediate value）mov到低位寄存器中。
 
 ![img/2017-11-17/t01536969993eab073e.png](http://p5.qhimg.com/t01536969993eab073e.png)
 
-图6.不包含null字节的代码
+<center>图6.不包含null字节的代码</center>
 
 ## 三、减少代码量
 这里唯一的问题在于，使用原始的mov指令后，这段代码大小仍然为5个字节。因此，我们可以考虑使用另一种方法来删除null字节，即使用push/pop组合指令。push指令支持[“推入”](https://software.intel.com/sites/default/files/managed/39/c5/325462-sdm-vol-1-2abcd-3abcd.pdf)一个8位立即数（同时也会将剩余的高位字节作为null字节推入栈中），这样就能从代码中删除多余的null字节。
