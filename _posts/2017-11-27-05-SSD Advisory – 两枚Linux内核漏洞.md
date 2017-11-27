@@ -13,13 +13,11 @@ tags:
     - PoC
 ---
 
-- **来自安全客 [【安全客链接】](http://bobao.360.cn/learning/detail/4748.html)**  
+- **来自SecuriTeam Blogs [【SecuriTeam Blogs链接】](https://blogs.securiteam.com/)**  
 
-## 
-SSD Advisory – Linux Kernel XFRM Privilege Escalation
-
-Want to get paid for a vulnerability similar to this one?
-Contact us at: ssd@beyondsecurity.com
+## SSD Advisory – Linux Kernel XFRM Privilege Escalation
+* Want to get paid for a vulnerability similar to this one? *
+Contact us at: ssd@beyondsecurity.com  
 See our full scope at: https://blogs.securiteam.com/index.php/product_scope
 
 ﻿Vulnerability Summary
