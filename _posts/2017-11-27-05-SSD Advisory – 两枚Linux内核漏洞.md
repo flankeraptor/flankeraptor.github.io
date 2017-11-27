@@ -16,7 +16,7 @@ tags:
 - **来自SecuriTeam Blogs [【SecuriTeam Blogs链接】](https://blogs.securiteam.com/)**  
 
 # SSD Advisory – Linux Kernel XFRM Privilege Escalation
-**Want to get paid for a vulnerability similar to this one?**
+**Want to get paid for a vulnerability similar to this one?**  
 Contact us at: ssd@beyondsecurity.com  
 See our full scope at: https://blogs.securiteam.com/index.php/product_scope
 
@@ -242,7 +242,7 @@ int main(int argc,char **argv)
 ```
 
 # SSD安全公告–Linux内核AF_PACKET 释放后重用漏洞
-**Want to get paid for a vulnerability similar to this one?**
+**Want to get paid for a vulnerability similar to this one?**  
 Contact us at: ssd@beyondsecurity.com  
 See our full scope at: https://blogs.securiteam.com/index.php/product_scope
 
