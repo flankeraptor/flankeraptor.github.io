@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 看我如何用ARM汇编语言编写TCP Bind Shell
+title: 【储备】看我如何用ARM汇编语言编写TCP Bind Shell
 subtitle: 2018/01/15
 date: 2018-01-15
 author: FR
